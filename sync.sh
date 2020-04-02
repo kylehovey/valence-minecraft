@@ -1,7 +1,6 @@
 #!/bin/bash
 
 backup_dir=~/backups
-bandwith_limit_kbps=200
 backup_host="backup"
 remote_backup_dir="~/friendcraft/"
 
