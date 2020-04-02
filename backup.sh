@@ -1,9 +1,11 @@
 #!/bin/bash
 
 cd ~/backups/
-name="$(date +"%Y-%m-%d--%H--%M--%S").backup.zip"
+name="$(date +"%Y-%m-%d--%H--%M--%S").backup.tar.gz"
 echo "Removing old backups"
 ls -t | tail -n +5 | xargs rm --
 echo "Backing up server..."
-zip $name -rv ../server
-echo "Backed up server in zipfile: $name"
+pushd ~
+tar -cvzf backups/$name --exclude='server/plugins/*' server
+popd
+echo "Backed up server in file: $name"
