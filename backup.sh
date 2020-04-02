@@ -1,9 +1,9 @@
 #!/bin/bash
 
 backup_count=5
-backup_dir=backups
-server_dir=server
-exclusion_list=config/exclude_from_backup.txt
+backup_dir=~/backups
+server_dir=~/server
+exclusion_list=~/config/exclude_from_backup.txt
 
 name="$(date +"%Y-%m-%d--%H--%M--%S").backup.tar.gz"
 
