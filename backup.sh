@@ -3,20 +3,18 @@
 backup_count=5
 backup_dir=backups
 server_dir=server
-ignore_files=(
-	server/plugins/*
-)
-ignore_directives=()
-
-for path in ${ignore_files[@]}; do
-	ignore_directives+=(--exclude="$path");
-done
+exclusion_list=config/exclude_from_backup.txt
 
 name="$(date +"%Y-%m-%d--%H--%M--%S").backup.tar.gz"
+
+pushd $backup_dir
 echo "Removing old backups"
-ls -t | tail -n +$backup_count | xargs rm --
-echo "Backing up server..."
-pushd
-tar -cvzf $backup_dir/$name "${exclude[@]}" $server_dir
+ls -t | tail -n +$backup_count | xargs -I{} sh -c "rm {}"
 popd
+
+pushd ~
+echo "Backing up server..."
+tar -cvzf $backup_dir/$name --exclude-from=$exclusion_list $server_dir
+popd
+
 echo "Backed up server in file: $name"
