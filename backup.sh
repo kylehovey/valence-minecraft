@@ -6,7 +6,7 @@ add_date() {
     done
 }
 
-backup_count=7
+backup_count=4
 log_file=~/logs/backup.log
 backup_dir=~/backups
 server_dir=~/server
