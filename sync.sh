@@ -9,7 +9,7 @@ add_date() {
 backup_dir=~/backups
 log_file=~/logs/sync.log
 backup_host="backup"
-remote_backup_dir="~/friendcraft/"
+remote_backup_dir="~/friendcraft_1.16/"
 t_stamp="$(date +"%Y-%m-%d--%H--%M--%S")"
 
 pushd $backup_dir
